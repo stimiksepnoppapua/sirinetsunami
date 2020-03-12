@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "890988889034",
+    "firebase_url": "https://sirine-tsunami.firebaseio.com",
+    "project_id": "sirine-tsunami",
+    "storage_bucket": "sirine-tsunami.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890988889034:android:3904d67c43ae8816430533",
+        "android_client_info": {
+          "package_name": "com.stimik1011.sirinetsunami"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890988889034-a3k1vl98po0j44kreh24cih5q219vqef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI7xaxIWfsfZ2tK5qRwvByDDqi0x-P7EQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890988889034-a3k1vl98po0j44kreh24cih5q219vqef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

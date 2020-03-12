@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobileBMKG.Views.Dirasakan">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="95*"/>
+            </Grid.RowDefinitions>
+            <ListView Grid.Row="1" ItemsSource="{Binding Source}"
+                       VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement" 
+                SelectionMode="Single">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="20" BackgroundColor="WhiteSmoke" RowSpacing="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image Source="magnitude.png" Aspect="AspectFit" WidthRequest="40"/>
+                                    <Label Text="{Binding Magnitude}" VerticalOptions="Center" FontSize="18"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="Center">
+                                    <Image WidthRequest="20"  Source="time.png"/>
+                                    <Label Text="{Binding Tanggal}"/>
+                                    <Label Text="{Binding Jam}"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+                                    <Label Text="{Binding Kedalaman}"/>
+                                    <Image WidthRequest="20"  Source="kedalaman.png"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal"  VerticalOptions="Center">
+                                    <Image Source="location.png" Aspect="AspectFit" WidthRequest="20"/>
+                                    <Label Text="{Binding Keterangan[0]}"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
