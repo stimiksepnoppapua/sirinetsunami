@@ -41,7 +41,7 @@ namespace MobileBMKG.Droid
                 //  .SetContentIntent(pendingIntent)
                 .SetContentTitle(title)
                 .SetContentText("Sirine Tsunami")
-                .SetAutoCancel(true)
+                .SetAutoCancel(false)
                 .SetStyle(bigStyle)
                 .SetSound(soundUri)
                 .SetPriority(NotificationCompat.PriorityMax)
