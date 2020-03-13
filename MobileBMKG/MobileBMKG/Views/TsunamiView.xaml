@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             mc:Ignorable="d"
+             x:Class="MobileBMKG.Views.TsunamiView">
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Image Source="Background.png" Aspect="Fill" Grid.RowSpan="2"/>
+            <Grid Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*"/>
+                    <RowDefinition Height="40*"/>
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="peta">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="TSUNAMI TERAKHIR" Margin="0,10,0,0" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <StackLayout Grid.Row="1">
+                        <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+			            Aspect="Fill" WidthRequest="400" HeightRequest="180"
+			            DownsampleToViewSize="true"
+			           Source = "{Binding DataGempa.Peta}">
+                        </ffimageloading:CachedImage>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="magnitude.png" Aspect="AspectFit" WidthRequest="50"/>
+                        <Label Text="{Binding DataGempa.Magnitude}" FontSize="18" FontAttributes="Bold" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                </Grid>
+                <Grid Grid.Row="1" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="40*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Spacing="40" >
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <Image WidthRequest="30"  Source="time.png"/>
+                                <Label FontSize="18" FontAttributes="Bold" Text="Time"/>
+                            </StackLayout>
+                            <Label Margin="35,0" Text="{Binding DataGempa.Tanggal}"/>
+                            <Label Margin="35,0" Text="{Binding DataGempa.Jam}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <Image WidthRequest="30"  Source="location.png"/>
+                                <Label FontSize="18" FontAttributes="Bold" Text="Location"/>
+                            </StackLayout>
+                            <Label Margin="35,0" Text="{Binding DataGempa.Area}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Spacing="40" Grid.Column="1">
+                        <StackLayout HorizontalOptions="End">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <Label FontSize="18" FontAttributes="Bold"  Text="Depth"/>
+                                <Image WidthRequest="30"  Source="kedalaman.png"/>
+                            </StackLayout>
+                            <Label Margin="35,0"  Text="{Binding DataGempa.Kedalaman}"/>
+                            <Label Margin="35,0"  Text=""/>
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="End">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <Label FontSize="18" FontAttributes="Bold"  Text="Tsunami"/>
+                                <Image WidthRequest="30"  Source="tsunami.png"/>
+                            </StackLayout>
+                            <Label Margin="35,0" FontSize="18" TextColor="Red" Text="Detail">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenWebCommand}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+
+                    </StackLayout>
+                </Grid>
+
+
+            </Grid>
+            <Grid Padding="0" Opacity="0.5" Grid.Row="1" >
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

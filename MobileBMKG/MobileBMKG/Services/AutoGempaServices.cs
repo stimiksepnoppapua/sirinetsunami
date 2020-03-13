@@ -39,6 +39,12 @@ namespace MobileBMKG.Services
             return terkini.Gempa;
         }
 
+        public async Task<Gempa> GetLastGempaTerkiniAsync()
+        {
+            var terkini = await GetData<InfoGempa>("http://data.bmkg.go.id/gempaterkini.xml");
+            return terkini.Gempa[0];
+        }
+
 
         public async Task<Infotsunami> GetLastTsunamiAsync()
         {

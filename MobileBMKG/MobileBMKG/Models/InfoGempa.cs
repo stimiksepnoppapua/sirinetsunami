@@ -176,7 +176,13 @@ namespace MobileBMKG.Models
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append("https://ews.bmkg.go.id/TEWS/data/");
-                var t = Tanggal.Split('/');
+              
+                if (Tanggal.Contains("-")) {
+                    Tanggal = DateTime.Parse(Tanggal).ToShortDateString();
+                }
+
+                Char separator = '/';
+                var t = Tanggal.Split(separator);
                 sb.Append($"{t[2]}{t[1]}{t[0]}");
                 var js = Jam.Split(' ');
                 var j = js[0].Split(':');

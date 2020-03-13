@@ -45,7 +45,7 @@ namespace MobileBMKG.Views
                 if (IsBusy)
                     return;
 
-                var data = await DataStore.LastGempaDirasakanAsync();
+                var data = await DataStore.GetLastGempaTerkiniAsync();
                 if (data != null)
                     DataGempa = data;
             }

@@ -19,22 +19,9 @@ namespace MobileBMKG.Droid
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
     public class MyFirebaseMessagingService : FirebaseMessagingService
     {
-        global::Android.Net.Uri soundUri = global::Android.Net.Uri.Parse("android.resource://" + "com.ocph23.bmkg" + "/raw/tsunami");
-
         public override void OnCreate()
         {
             base.OnCreate();
-            if (MainActivity.IsBacground)
-            {
-                var powerManager = (PowerManager)GetSystemService(PowerService);
-                var wakeLock = powerManager.NewWakeLock(WakeLockFlags.ScreenDim | WakeLockFlags.AcquireCausesWakeup, "Info Tsunami");
-                wakeLock.Acquire();
-                AlarmManager manager = (AlarmManager)GetSystemService(Context.AlarmService);
-                Intent myIntent = new Intent(this, typeof(NotifyBroadcastReceived));
-                PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, myIntent, PendingIntentFlags.OneShot);
-                myIntent.SetFlags(ActivityFlags.ClearTop);
-                manager.Set(AlarmType.RtcWakeup, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(), pendingIntent);
-            }
         }
 
         public override void OnMessageReceived(RemoteMessage message)
@@ -49,7 +36,7 @@ namespace MobileBMKG.Droid
             // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
             var context = MainActivity.Instance;
             NotificationManager notificationManager = context.GetSystemService(Context.NotificationService) as NotificationManager;
-
+            Android.Net.Uri soundUri = Android.Net.Uri.Parse("android.resource://" + "com.stimik1011.sirinesunami/" + Resource.Raw.tsunami);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, MainActivity.CHANNEL_ID)
                 //  .SetContentIntent(pendingIntent)
                 .SetContentTitle(title)
@@ -75,14 +62,7 @@ namespace MobileBMKG.Droid
 
             builder.AddAction(Resource.Drawable.abc_ic_menu_overflow_material, "VIEW", pendingIntent);
             builder.AddAction(Resource.Drawable.abc_ic_menu_cut_mtrl_alpha, "DISMISS", dismissIntent);
-           
-           NotifyBroadcastReceived.ringtone = NotifyBroadcastReceived.ringtone ?? RingtoneManager.GetRingtone(context, soundUri);
-
-            if (!NotifyBroadcastReceived.ringtone.IsPlaying)
-                NotifyBroadcastReceived.ringtone.Play();
-
             notificationManager.Notify(MainActivity.NOTIFICATION_ID, builder.Build());
         }
     }
-    
 }

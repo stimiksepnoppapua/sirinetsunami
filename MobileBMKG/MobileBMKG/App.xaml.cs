@@ -3,12 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MobileBMKG.Views;
 using MobileBMKG.Models;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Distribute;
-using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Analytics;
 using MobileBMKG.Services;
-using Microsoft.AppCenter.Push;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MobileBMKG
@@ -35,7 +30,7 @@ namespace MobileBMKG
         {
             /*   OneSignal.Current.StartInit("b5e98c46-d915-4642-9c54-124e36ca57d5")
                      .EndInit();*/
-            AppCenter.Start("bdcdf782-fe9b-4198-a50f-552a56f3df06", typeof(Push));
+           /* AppCenter.Start("bdcdf782-fe9b-4198-a50f-552a56f3df06", typeof(Push));
             if (!AppCenter.Configured)
             {
                 Push.PushNotificationReceived += (sender, e) =>
@@ -57,7 +52,7 @@ namespace MobileBMKG
                         }
                     }
                 };
-            }
+            }*/
         }
 
         protected override void OnSleep()

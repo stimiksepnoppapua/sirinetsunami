@@ -1,16 +1,11 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using Android.Content;
 using Android.Util;
-using Microsoft.AppCenter.Push;
-using System.Collections.Generic;
 using Android.Gms.Common;
 using Android.Media;
+using Android.Support.V4.App;
 
 namespace MobileBMKG.Droid
 {
@@ -35,8 +30,8 @@ namespace MobileBMKG.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             base.OnCreate(savedInstanceState);
-
-            IsPlayServicesAvailable();
+            Firebase.Messaging.FirebaseMessaging.Instance.SubscribeToTopic("tsunami");
+           // IsPlayServicesAvailable();
             CreateNotificationChannel();
             Instance = this;
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
@@ -60,8 +55,6 @@ namespace MobileBMKG.Droid
         protected override void OnNewIntent(Intent intent)
         {
             base.OnNewIntent(intent);
-            Push.CheckLaunchedFromNotification(this, intent);
-
         }
 
         public bool IsPlayServicesAvailable()
@@ -76,7 +69,6 @@ namespace MobileBMKG.Droid
                     msgText = "This device is not supported";
                     Finish();
                 }
-
                 Log.Debug(TAG,msgText);
                 return false;
             }
@@ -87,28 +79,32 @@ namespace MobileBMKG.Droid
                 return true;
             }
         }
-
-
+      
+        
         void CreateNotificationChannel()
         {
-            if (Build.VERSION.SdkInt < BuildVersionCodes.O)
-            {
-                    // Notification channels are new in API 26 (and not a part of the
-                    // support library). There is no need to create a notification
-                    // channel on older versions of Android.
-                return;
-            }
 
-            var channel = new NotificationChannel(CHANNEL_ID,
-                                                  "FCM Notifications",
-                                                  NotificationImportance.Default)
-            {
-                Description = "Firebase Cloud Messages appear in this channel"
-            };
+            Android.Net.Uri soundUri = Android.Net.Uri.Parse("android.resource://" + "com.stimik1011.sirinesunami/" + Resource.Raw.tsunami);
 
             var notificationManager = (NotificationManager)GetSystemService(Android.Content.Context.NotificationService);
-            notificationManager.CreateNotificationChannel(channel);
+
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            {
+                var channel = new NotificationChannel(CHANNEL_ID, "Sirine Tsunami", NotificationImportance.Max)
+                {
+                    Description = "Firebase Cloud Sirine Tsunami Channel"
+                };
+
+                AudioAttributes att = new AudioAttributes.Builder()
+                      .SetUsage(AudioUsageKind.VoiceCommunicationSignalling)
+                      .SetContentType(AudioContentType.Speech)
+                      .Build();
+
+                channel.SetSound(soundUri, att);
+                notificationManager.CreateNotificationChannel(channel);
+            }
         }
+
 
     }
 }

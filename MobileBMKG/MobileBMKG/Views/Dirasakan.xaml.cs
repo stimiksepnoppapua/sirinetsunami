@@ -37,7 +37,8 @@ namespace MobileBMKG.Views
                 return;
             else
             {
-                var items =await DataStore.GetGempaDirasakanAsync();
+                IsBusy = true;
+                var items =await DataStore.GetGempaTerkiniAsync();
                 if(items!=null && items.Count > 0)
                 {
                     Source.Clear();
@@ -46,7 +47,9 @@ namespace MobileBMKG.Views
                         Source.Add(item);
                     }
                 }
-              
+
+                IsBusy = false;
+
             }
         }
 

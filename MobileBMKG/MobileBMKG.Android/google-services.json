@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:890988889034:android:3904d67c43ae8816430533",
+        "mobilesdk_app_id": "1:890988889034:android:11a3af8835491183430533",
         "android_client_info": {
-          "package_name": "com.stimik1011.sirinetsunami"
+          "package_name": "com.stimik1011.sirinesunami"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "890988889034-ktd4pamntp84ata48i5v18c4katnun4s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stimik1011.sirinesunami",
+            "certificate_hash": "669602cc7464b90b5a8a69fb7ae01be5e64e137f"
+          }
+        },
         {
           "client_id": "890988889034-a3k1vl98po0j44kreh24cih5q219vqef.apps.googleusercontent.com",
           "client_type": 3

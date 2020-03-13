@@ -19,7 +19,7 @@ namespace MobileBMKG.Droid
     public class NotifyBroadcastReceived : BroadcastReceiver
     {
         public static Ringtone ringtone;
-        global::Android.Net.Uri soundUri = global::Android.Net.Uri.Parse("android.resource://" + "com.ocph23.bmkg" + "/raw/tsunami");
+        global::Android.Net.Uri soundUri = global::Android.Net.Uri.Parse("android.resource://" + "com.stimik1011.sirinesunami" + "/raw/tsunami");
         public override void OnReceive(Context context, Intent intent)
         {
             var bigStyle = new NotificationCompat.BigTextStyle().BigText("Telah Terjadi Tsunami");

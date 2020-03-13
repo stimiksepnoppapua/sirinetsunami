@@ -7,11 +7,8 @@
              x:Class="MobileBMKG.Views.Dirasakan">
     <ContentPage.Content>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="95*"/>
-            </Grid.RowDefinitions>
-            <ListView Grid.Row="1" ItemsSource="{Binding Source}"
+            <Image Source="Background.png" Aspect="Fill" />
+            <ListView Margin="30"  ItemsSource="{Binding Source}"
                        VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadCommand}"
@@ -47,7 +44,7 @@
                                 </StackLayout>
                                 <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal"  VerticalOptions="Center">
                                     <Image Source="location.png" Aspect="AspectFit" WidthRequest="20"/>
-                                    <Label Text="{Binding Keterangan[0]}"/>
+                                    <Label Text="{Binding Wilayah}"/>
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

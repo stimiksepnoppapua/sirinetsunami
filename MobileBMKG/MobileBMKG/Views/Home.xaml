@@ -56,7 +56,7 @@
                                 <Image WidthRequest="30"  Source="location.png"/>
                                 <Label FontSize="18" FontAttributes="Bold" Text="Location"/>
                             </StackLayout>
-                            <Label Margin="35,0" Text="{Binding DataGempa.Keterangan[0]}"/>
+                            <Label Margin="35,0" Text="{Binding DataGempa.Wilayah}"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout Spacing="40" Grid.Column="1">
