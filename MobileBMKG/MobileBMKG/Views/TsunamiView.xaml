@@ -12,6 +12,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
+         
+            <Image Source="cendrawasih.png" Aspect="Fill" Grid.RowSpan="2"/>
             <Image Source="Background.png" Aspect="Fill" Grid.RowSpan="2"/>
             <Grid Margin="30">
                 <Grid.RowDefinitions>
@@ -26,7 +28,7 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <Label Text="TSUNAMI TERAKHIR" Margin="0,10,0,0" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="TSUNAMI TERAKHIR" TextColor="White" Margin="0,10,0,0" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
                     <StackLayout Grid.Row="1">
                         <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
 			            Aspect="Fill" WidthRequest="400" HeightRequest="180"
@@ -36,7 +38,7 @@
                     </StackLayout>
                     <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                         <Image Source="magnitude.png" Aspect="AspectFit" WidthRequest="50"/>
-                        <Label Text="{Binding DataGempa.Magnitude}" FontSize="18" FontAttributes="Bold" VerticalOptions="Center"/>
+                        <Label TextColor="White" Text="{Binding DataGempa.Magnitude}" FontSize="18" FontAttributes="Bold" VerticalOptions="Center"/>
                     </StackLayout>
 
                 </Grid>
@@ -49,32 +51,32 @@
                         <StackLayout>
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                                 <Image WidthRequest="30"  Source="time.png"/>
-                                <Label FontSize="18" FontAttributes="Bold" Text="Time"/>
+                                <Label TextColor="White" FontSize="18" FontAttributes="Bold" Text="Time"/>
                             </StackLayout>
-                            <Label Margin="35,0" Text="{Binding DataGempa.Tanggal}"/>
-                            <Label Margin="35,0" Text="{Binding DataGempa.Jam}"/>
+                            <Label TextColor="White" Margin="35,0" Text="{Binding DataGempa.Tanggal}"/>
+                            <Label TextColor="White" Margin="35,0" Text="{Binding DataGempa.Jam}"/>
                         </StackLayout>
                         <StackLayout>
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                                <Image WidthRequest="30"  Source="location.png"/>
-                                <Label FontSize="18" FontAttributes="Bold" Text="Location"/>
+                                <Image WidthRequest="30"   Source="location.png"/>
+                                <Label FontSize="18" TextColor="White" FontAttributes="Bold" Text="Location"/>
                             </StackLayout>
-                            <Label Margin="35,0" Text="{Binding DataGempa.Area}"/>
+                            <Label Margin="35,0" TextColor="White" Text="{Binding DataGempa.Area}"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout Spacing="40" Grid.Column="1">
                         <StackLayout HorizontalOptions="End">
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                                <Label FontSize="18" FontAttributes="Bold"  Text="Depth"/>
+                                <Label FontSize="18" FontAttributes="Bold" TextColor="White"  Text="Depth"/>
                                 <Image WidthRequest="30"  Source="kedalaman.png"/>
                             </StackLayout>
-                            <Label Margin="35,0"  Text="{Binding DataGempa.Kedalaman}"/>
-                            <Label Margin="35,0"  Text=""/>
+                            <Label Margin="35,0" TextColor="White"  Text="{Binding DataGempa.Kedalaman}"/>
+                            <Label Margin="35,0" TextColor="White" Text=""/>
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="End">
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                                <Label FontSize="18" FontAttributes="Bold"  Text="Tsunami"/>
+                                <Label FontSize="18" TextColor="White" FontAttributes="Bold"  Text="Tsunami"/>
                                 <Image WidthRequest="30"  Source="tsunami.png"/>
                             </StackLayout>
                             <Label Margin="35,0" FontSize="18" TextColor="Red" Text="Detail">

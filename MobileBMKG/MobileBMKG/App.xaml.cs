@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 using MobileBMKG.Views;
 using MobileBMKG.Models;
 using MobileBMKG.Services;
+using System.Threading.Tasks;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MobileBMKG
