@@ -23,7 +23,15 @@ namespace MobileBMKG
 
             });
 
-        
+            MessagingCenter.Subscribe<MessagingCenterAlert>(this, "alaram", async (message) =>
+            {
+                await Current.MainPage.DisplayAlert(message.Title, message.Message, message.Cancel);
+                IAlarmService service = DependencyService.Get<IAlarmService>();
+                service.StopSound();
+
+            });
+
+
         }
 
 

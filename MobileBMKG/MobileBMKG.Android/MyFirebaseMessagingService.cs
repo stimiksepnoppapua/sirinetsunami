@@ -32,14 +32,66 @@ namespace MobileBMKG.Droid
 
         void SendNotification(string title, string messageBody, IDictionary<string, string> data)
         {
-
             Device.BeginInvokeOnMainThread(() =>
             {
-                Xamarin.Forms.MessagingCenter.Send(new MobileBMKG.MessagingCenterAlert { Title = title, Message = messageBody, Cancel = "Ok" }, "message");
+                Xamarin.Forms.MessagingCenter.Send(new MobileBMKG.MessagingCenterAlert { Title = title, Message = messageBody, Cancel = "Ok" , OnCompleted=complete}, "alaram");
             });
 
-           
-          
+            var context = MainActivity.Instance;
+            Android.Net.Uri soundUri = Android.Net.Uri.Parse("android.resource://" + "com.stimik1011.sirinesunami/" + Resource.Raw.tsunami);
+            NotifyBroadcastReceived.ringtone = NotifyBroadcastReceived.ringtone ?? RingtoneManager.GetRingtone(context, soundUri);
+
+            if (!NotifyBroadcastReceived.ringtone.IsPlaying)
+                NotifyBroadcastReceived.ringtone.Play();
+
+
+
+
+
+
+
+            /*  Xamarin.Forms.MessagingCenter.Send(new MobileBMKG.MessagingCenterAlert { Title = title, Message = messageBody, Cancel = "Ok" }, "message");
+              var bigStyle = new NotificationCompat.BigTextStyle().BigText(messageBody);
+              // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
+              var context = MainActivity.Instance;
+              NotificationManager notificationManager = context.GetSystemService(Context.NotificationService) as NotificationManager;
+              Android.Net.Uri soundUri = Android.Net.Uri.Parse("android.resource://" + "com.stimik1011.sirinesunami/" + Resource.Raw.tsunami);
+              NotificationCompat.Builder builder = new NotificationCompat.Builder(context, MainActivity.CHANNEL_ID)
+                  //  .SetContentIntent(pendingIntent)
+                  .SetContentTitle(title)
+                  .SetContentText("Sirine Tsunami")
+                  .SetAutoCancel(false)
+                  .SetStyle(bigStyle)
+                  .SetSound(soundUri)
+                  .SetPriority(NotificationCompat.PriorityMax)
+                  .SetSmallIcon(Resource.Drawable.icontsunami);
+
+              if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Lollipop)
+              {
+                  builder.SetVisibility(NotificationCompat.VisibilityPublic);
+              }
+
+              Intent intent = new Intent(Intent.ActionView, Android.Net.Uri.Parse("http://inatews.bmkg.go.id/terkini.php"));
+              PendingIntent pendingIntent = PendingIntent.GetActivity(context, MainActivity.NOTIFICATION_ID, intent, PendingIntentFlags.UpdateCurrent);
+
+              Intent buttonIntent = new Intent(context, typeof(DissmisService));
+
+              buttonIntent.PutExtra("notificationId", MainActivity.CHANNEL_ID);
+              PendingIntent dismissIntent = PendingIntent.GetBroadcast(context, MainActivity.NOTIFICATION_ID, buttonIntent, PendingIntentFlags.CancelCurrent);
+
+              builder.AddAction(Resource.Drawable.abc_ic_menu_overflow_material, "VIEW", pendingIntent);
+              builder.AddAction(Resource.Drawable.abc_ic_menu_cut_mtrl_alpha, "DISMISS", dismissIntent);
+              notificationManager.Notify(MainActivity.NOTIFICATION_ID, builder.Build());*/
+        }
+
+        private void complete()
+        {
+            var context = MainActivity.Instance;
+            Android.Net.Uri soundUri = Android.Net.Uri.Parse("android.resource://" + "com.stimik1011.sirinesunami/" + Resource.Raw.tsunami);
+            NotifyBroadcastReceived.ringtone = NotifyBroadcastReceived.ringtone ?? RingtoneManager.GetRingtone(context, soundUri);
+
+            if (NotifyBroadcastReceived.ringtone.IsPlaying)
+                NotifyBroadcastReceived.ringtone.Stop();
         }
     }
 }

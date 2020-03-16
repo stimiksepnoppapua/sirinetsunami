@@ -7,5 +7,6 @@ namespace MobileBMKG.Services
     public interface IAlarmService
     {
         void PlaySound();
+        void StopSound();
     }
 }
